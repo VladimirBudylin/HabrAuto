@@ -11,7 +11,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -36,15 +38,17 @@ public class MainPageTest {
     }
 
     @Test
-    @DisplayName(value = "Отображение ---")
-    public void burgerTest() {
+    @DisplayName(value = "Отображение кнопки Suggest")
+    public void suggestTest() {
         WebElement allStreamsButton = driver.findElement(By.xpath("//a[contains(text(), 'All streams') and contains(@href, '/articles')]"));
         allStreamsButton.click();
 
         WebElement hubsButton = driver.findElement(By.xpath("//a[text()='Hubs' and contains(@href, '/hubs')]"));
         hubsButton.click();
 
-        assertTrue(driver.findElement(By.cssSelector(".tm-suggest-button")).isDisplayed(), "Suggest new не найдена");
+        WebElement suggest = driver.findElement(By.cssSelector(".tm-suggest-button"));
+
+        assertTrue(suggest.isDisplayed(), "Suggest new не найдена");
 
     }
 }
