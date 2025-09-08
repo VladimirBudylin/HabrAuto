@@ -40,7 +40,7 @@ public class DemoqaTest {
         driver.get("https://demoqa.com/dynamic-properties");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         WebElement disabledButton = driver.findElement(By.cssSelector("#enableAfter"));
-        wait.untill(ExpectedConditions.elementToBeClickable(disabledButton));
+        wait.until(ExpectedConditions.elementToBeClickable(disabledButton));
         assertTrue(disabledButton.isEnabled(), "кнопка не стала активной");
     }
 }
