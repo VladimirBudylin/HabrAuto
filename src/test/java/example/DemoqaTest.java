@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WrapsDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -43,6 +44,26 @@ public class DemoqaTest {
         wait.until(ExpectedConditions.elementToBeClickable(disabledButton));
         assertTrue(disabledButton.isEnabled(), "кнопка не стала активной");
     }
+
+    @Test
+    @DisplayName(value = "Кнопка меняющая цвет")
+    public void colorChange () {
+        driver.get("https://demoqa.com/dynamic-properties");
+        WebElement colorizedButton = driver.findElement(By.cssSelector("#colorChange"));
+        wait.untill(ExpectedConditions.);
+
+    }
+
+    @Test
+    @DisplayName()
+    public void visisbleAfter () {
+        driver.get("https://demoqa.com/dynamic-properties");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
+        WebElement visibleAfterButton = driver.findElement(By.cssSelector("#visibleAfter"));
+        wait.until(ExpectedConditions.elementToBeClickable(visibleAfterButton));
+        assertTrue(visibleAfterButton.isDisplayed(), "Кнопка не кликабельна");
+    }
+
 
     @Test
     @DisplayName(value = "Текст спрятанный до выполнения условия")
