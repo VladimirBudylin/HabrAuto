@@ -43,4 +43,26 @@ public class DemoqaTest {
         wait.until(ExpectedConditions.elementToBeClickable(disabledButton));
         assertTrue(disabledButton.isEnabled(), "кнопка не стала активной");
     }
+
+    @Test
+    @DisplayName(value = "Текст спрятанный до выполнения условия")
+    public void hidden() {
+        driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
+        driver.findElement(By.cssSelector("#start button")).click();
+        WebElement helloTest = driver.findElement(By.cssSelector("#finish h4"));
+        wait.until(ExpectedConditions.visibilityOf(helloTest));
+        assertTrue(helloTest.isDisplayed(), "Нет нужного текста");
+    }
+
+    @Test
+    @DisplayName(value = "Элемент появляется в dom после ожидания")
+    public void notLoaded() {
+        driver.get("https://the-internet.herokuapp.com/dynamic_loading/2");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
+        driver.findElement(By.cssSelector("#start button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#finish h4")));
+        WebElement helloText = driver.findElement(By.cssSelector("#finish h4"));
+        assertTrue(driver.findElement(By.cssSelector("#finish h4")).isDisplayed(), "Нет нужного текста");
+    }
 }
