@@ -40,27 +40,29 @@ public class MainPageTest {
     @Test
     @DisplayName(value = "Первый тест, на отображение кнопки Suggest")
     public void suggestTest() {
-        WebElement allStreamsButton = driver.findElement(By.xpath("//a[contains(text(), 'All streams') and contains(@href, '/articles')]"));
+        WebElement allStreamsButton = driver.findElement(By.xpath("//a[contains(text(), 'All streams') " +
+                "and contains(@href, '/articles')]"));
         allStreamsButton.click();
-
-        WebElement hubsButton = driver.findElement(By.xpath("//a[text()='Hubs' and contains(@href, '/hubs')]"));
+        WebElement hubsButton = driver.findElement(By.xpath("//a[contains(text(), 'Hubs') " +
+                "and contains(@href, '/hubs')]"));
         hubsButton.click();
-
         WebElement suggest = driver.findElement(By.cssSelector(".tm-suggest-button"));
         assertTrue(suggest.isDisplayed(), "Suggest new не найдена");
-
     }
 
     @Test
     @DisplayName(value = "Второй тест на отображение пагинации")
-    public void secondTest() {
-        WebElement startupButoon = driver.findElement(By.xpath("//a[@class='footer-menu__item-link' and @href='/en/sandbox/']"));
+    public void paginationTest() {
+        WebElement startupButoon = driver.findElement(By.xpath("//a[contains(@href, '/sandbox/') " +
+                "and contains(@class, 'footer-menu')]"));
         startupButoon.click();
-
-        WebElement paginationButton = driver.findElement(By.xpath("//a[@class='tm-pagination__page' and @href='/en/sandbox/page4/']\n"));
+        WebElement paginationButton = driver.findElement(By.xpath("//a[contains(@href, '/sandbox/page4') "
+                +
+                "and contains(@class, 'tm-pagination__page')]"));
         paginationButton.click();
-
-        WebElement returnButton = driver.findElement(By.xpath("//span[@class='tm-pagination__navigation-link-title' and text()='Here']\n"));
+        WebElement returnButton = driver.findElement(By.xpath("//*[contains(@class, " +
+                "'tm-pagination__navigation-link-title') " +
+                "and contains(text(), 'Here')]"));
         assertTrue(returnButton.isDisplayed(), "Кнопка назад отсутствует");
     }
 }

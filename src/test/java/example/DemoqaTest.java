@@ -50,7 +50,7 @@ public class DemoqaTest {
     public void colorChange () {
         driver.get("https://demoqa.com/dynamic-properties");
         WebElement colorizedButton = driver.findElement(By.cssSelector("#colorChange"));
-        wait.untill(ExpectedConditions.);
+        wait.untill(ExpectedConditions.invisibilityOf(colorizedButton));
 
     }
 
@@ -63,6 +63,15 @@ public class DemoqaTest {
         wait.until(ExpectedConditions.elementToBeClickable(visibleAfterButton));
         assertTrue(visibleAfterButton.isDisplayed(), "Кнопка не кликабельна");
     }
+
+
+
+
+
+
+
+
+
 
 
     @Test
