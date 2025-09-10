@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WrapsDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -47,7 +46,7 @@ public class DemoqaTest {
 
     @Test
     @DisplayName(value = "Кнопка меняющая цвет")
-    public void colorChange () {
+    public void colorChange() {
         driver.get("https://demoqa.com/dynamic-properties");
         WebElement colorizedButton = driver.findElement(By.cssSelector("#colorChange"));
         wait.until(ExpectedConditions.attributeContains(colorizedButton, "class",
@@ -57,22 +56,13 @@ public class DemoqaTest {
 
     @Test
     @DisplayName(value = "Кнопка появляющаяся спустя время")
-    public void visisbleAfter () {
+    public void visisbleAfter() {
         driver.get("https://demoqa.com/dynamic-properties");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         WebElement visibleAfterButton = driver.findElement(By.cssSelector("#visibleAfter"));
         wait.until(ExpectedConditions.elementToBeClickable(visibleAfterButton));
         assertTrue(visibleAfterButton.isDisplayed(), "Кнопка не кликабельна");
     }
-
-
-
-
-
-
-
-
-
 
 
     @Test
