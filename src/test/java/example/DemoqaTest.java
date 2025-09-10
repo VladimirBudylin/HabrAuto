@@ -48,6 +48,7 @@ public class DemoqaTest {
     @DisplayName(value = "Кнопка меняющая цвет")
     public void colorChange() {
         driver.get("https://demoqa.com/dynamic-properties");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
         WebElement colorizedButton = driver.findElement(By.cssSelector("#colorChange"));
         wait.until(ExpectedConditions.attributeContains(colorizedButton, "class",
                 ".mt-4 text-danger btn btn-primary"));
