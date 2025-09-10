@@ -36,7 +36,7 @@ public class DemoqaTest {
     }
 
     @Test
-    @DisplayName(value = "Отображение кнопки с отложенной видимостью")
+    @DisplayName(value = "Доступность кнопки спустя время")
     public void enable() {
         driver.get("https://demoqa.com/dynamic-properties");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
@@ -50,12 +50,13 @@ public class DemoqaTest {
     public void colorChange () {
         driver.get("https://demoqa.com/dynamic-properties");
         WebElement colorizedButton = driver.findElement(By.cssSelector("#colorChange"));
-        wait.untill(ExpectedConditions.invisibilityOf(colorizedButton));
-
+        wait.until(ExpectedConditions.attributeContains(colorizedButton, "class",
+                ".mt-4 text-danger btn btn-primary"));
+        assertTrue(colorizedButton.isDisplayed(), "Кнопка отображается");
     }
 
     @Test
-    @DisplayName()
+    @DisplayName(value = "Кнопка появляющаяся спустя время")
     public void visisbleAfter () {
         driver.get("https://demoqa.com/dynamic-properties");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
