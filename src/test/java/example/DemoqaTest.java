@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class DemoqaTest {
-    private WebDriver driver;
+    public WebDriver driver;
 
     @BeforeEach
     public void setUP() {
